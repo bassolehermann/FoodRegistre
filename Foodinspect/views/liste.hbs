@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Foodinspect</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/bootstrap.js"></script>
+
+</head>
+
+	<body class="bg-info">
+			<nav class="navbar navbar-default">
+					<div class="container-fluid">
+					  <div class="navbar-header">
+						<a class="navbar-brand" href="/">{{title}}
+						</a>
+					  </div>
+					  <ul class="nav navbar-nav">
+						<li ><a href="/">Accueil</a></li>
+						<li><a href="/ajout">Ajouter Recettes</a></li>
+						<li><a href="/liste">liste des recettes</a></li>
+					  </ul>
+					</div>
+				  </nav>
+		
+		<div class="container " >
+
+			
+							<table class="table table-striped  col-md-4 "  id="mytable" >
+								<thead>
+
+										<tr>
+											<th>Nom Recette </th>
+											<th>Genre</th>
+											<th>Vue et Descriptions</th>
+											<th>Actions</th>	
+										</tr>
+								</thead>
+								<tbody>
+
+									{{#each results}}
+										<tr>
+												<td>{{nom}}</td>
+												<td>{{type}}</td>
+												<td>
+
+														<a data-toggle="modal" data-target="#{{id}}" class="btn btn-default btn-sm" ><span class="glyphicon glyphicon-eye-open" ></span></a>
+
+														<!-- modal de vue -->
+												
+												<div class="modal fade" id="{{id}}" role="dialog">
+											    <div class="modal-dialog">
+											    
+											      <!-- Modal content-->
+											      <div class="modal-content">
+											        <div class="modal-header">
+											          <button type="button" class="close" data-dismiss="modal">&times;</button>
+											          <h4 class="modal-title">{{nom}}</h4>
+											        </div>
+									          				<div class="col-sm-6">
+
+									          					<br>	
+									          						
+
+																		
+																		<div class="form-group">
+																			<label>Ingredients : {{ingredients}}</label>
+																		</div>
+																		<br>	
+																		<div class="form-group">
+																			<label>Preparation : {{preparation}}</label>
+																		</div>
+																		<br>
+																		<div class="form-group">
+																			<label>Type : {{type}}</label>
+																		</div>
+															</div>
+														
+															<div  class="col-sm-6 thumbnail">
+																<div class="static">
+																	<img src="images/yassa.jpg" >
+																</div>
+																<br>
+															</div>
+					        
+											        <div class="modal-footer">
+											          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											        </div>
+					      						</div>
+					      
+											    </div>
+											  </div>
+
+
+												</td>
+
+
+												<td>
+													
+													<a href="javascript:void(0);"  class="btn btn-sm btn-danger delete" data-id="{{id}}"><span class="glyphicon glyphicon-trash" ></span></a>
+													
+												</td>
+
+										</tr>
+
+										
+
+									{{/each}}
+									
+								</tbody>
+
+							</table>
+
+					
+				</div>
+						
+
+						  <!-- Modal Delete -->
+						      <form id="add-row-form" action="/delete" method="post">
+						         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						            <div class="modal-dialog">
+						               <div class="modal-content">
+						                   <div class="modal-header">
+						                                        <h5 class="modal-title" id="myModalLabel">Supprimer la recette</h5>
+						                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						                   </div>
+						                   <div class="modal-body">
+						                                                 <strong>Vous etes sure de vouloir supprimer la recette ?</strong>
+						                   </div>
+						                   <div class="modal-footer">
+						                        <input type="hidden" name="id" class="form-control product_id2" required>
+						                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						                        <button type="submit" class="btn btn-success">Delete</button>
+						                   </div>
+						                    </div>
+						            </div>
+						         </div>
+						     </form>
+
+				
+				
+
+<script>
+    $(document).ready(function(){
+		
+		$('#mytable').on('click','.delete',function(){
+        var id = $(this).data('id');
+        $('#DeleteModal').modal('show');
+        $('.product_id2').val(id);
+      });
+
+    });
+</script>
+
+				
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/bootstrap.js"></script>
+</head>
+	<body class="bg-info">
+			<nav class="navbar navbar-default">
+					<div class="container-fluid">
+					  <div class="navbar-header">
+						<a class="navbar-brand" href="/">{{title}}
+						</a>
+					  </div>
+					  <ul class="nav navbar-nav">
+						<li><a href="/">Accueil</a></li>
+						<li><a href="/ajout">Ajouter Recettes</a></li>
+						<li><a href="/liste">liste des recettes</a></li>
+					  </ul>
+					</div>
+				  </nav>
+				</div>
+				<div class="container">
+
+							<div class="col-md-6 col-md-offset-3" style="  background-color  :white; margin-top:25px; padding:20px; border-radius: 10px;" >
+									<div class="row">
+
+											<div class="col-lg-12">
+
+													<form class="form" action="/save" method="post" role="form">
+
+
+														<div class="row">
+
+																<div class="col-lg-12">
+																	<label for="nom"> Nom de la recette</label>
+																	<input type="text" name="nom" class="form-control" placeholder="Nom de la recette" required value="">
+																</div>
+																<div class="col-lg-12">
+																	<label for="ingredient"> ingredients</label>
+																	<textarea style="width:100% " name="ingredients" id="ingredients" class="col-lg-12"></textarea>
+																</div>
+																<div class="col-lg-12">
+																	<label for="preparation"> preparation</label>
+																	<textarea style="width:100% " name="preparation" id="preparation" class="col-lg-12"></textarea>
+																</div>
+
+																<div class="col-lg-12">
+
+																		<label for="image"> Inserer une image</label> <br>
+																		<input name="image"  type="file">
+																</div>
+
+
+																<div class="col-lg-12">
+																<label for="genre">Type</label><br>
+																<select name=value >
+																		<option value="Petit Dejeuner">Petit Dejeuner</option>
+																		<option value="Dejeuner">Dejeuner</option>
+																		<option value="Diner">Diner</option>
+																</select> <br>
+																</div>
+															
+																<div class="col-lg-12" style="padding-top:8px">
+																		<input class="btn btn-primary" type="submit" value="submit">
+																</div>
+
+
+
+													</form>
+
+
+											</div>
+
+
+
+									</div>
+								</div> 
+				</div>
+		
+	</body>
+</html>
